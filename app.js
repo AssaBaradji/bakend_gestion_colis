@@ -1,7 +1,13 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-            
+import utilisateurRoutes from "./src/routes/utilisateurRoutes.js"; 
+import paiementRoutes from "./src/routes/paiementRoutes.js";    
+import expeditionRoutes from "./src/routes/expeditionRoutes.js"; 
+import livraisonRoutes from "./src/routes/livraisonRoutes.js";   
+import methodePaiementRoutes from "./src/routes/methodePaiementRoutes.js"; 
+import typeColisRoutes from "./src/routes/typeColisRoutes.js";     
+import colisRoutes from "./src/routes/colisRoutes.js";             
 
 const app = express();
 const port = 3000;
@@ -23,7 +29,13 @@ app.use(cors(corsOptions));
 app.use(helmet());
 
 
-                 
+app.use("/utilisateurs", utilisateurRoutes); 
+app.use("/paiements", paiementRoutes);      
+app.use("/expeditions", expeditionRoutes);    
+app.use("/livraisons", livraisonRoutes);      
+app.use("/methodes-paiement", methodePaiementRoutes); 
+app.use("/types-colis", typeColisRoutes);     
+app.use("/colis", colisRoutes);                 
 
 
 app.listen(port, () => {
