@@ -22,17 +22,15 @@ model Utilisateur {
 }
 
 model MethodePaiement {
-  id            Int          @id @default(autoincrement())
-  nom           String       @db.VarChar(50)
-  
-  paiements     Paiement[]
+  id        Int       @id @default(autoincrement())
+  nom       String    @db.VarChar(50)
+  paiements Paiement[]
 }
 
 model TypeColis {
-  id            Int          @id @default(autoincrement())
-  nom           String       @db.VarChar(50)
-
-  colis         Colis[]
+  id    Int     @id @default(autoincrement())
+  nom   String  @db.VarChar(50)
+  colis Colis[]
 }
 
 model Colis {
@@ -44,45 +42,45 @@ model Colis {
   emplacement_colis   String      @db.VarChar(100)
 
   utilisateurId Int
-  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id])
+  utilisateur   Utilisateur      @relation(fields: [utilisateurId], references: [id])
 
   paiements     Paiement[]
   typeId        Int
-  typeColis     TypeColis   @relation(fields: [typeId], references: [id])
-  expedition     Expedition?
+  typeColis     TypeColis        @relation(fields: [typeId], references: [id])
+  expedition    Expedition?
 }
 
 model Paiement {
-  id               Int          @id @default(autoincrement())
-  montant          Decimal      @db.Decimal(10, 2)
-  methode_paiement String       @db.VarChar(50)
-  moment_paiement  String       @db.VarChar(50)
+  id               Int             @id @default(autoincrement())
+  montant          Decimal         @db.Decimal(10, 2)
+  methode_paiement String          @db.VarChar(50)
+  moment_paiement  String          @db.VarChar(50)
   date_paiement    DateTime
 
-  utilisateurId Int
-  colisId       Int
-  methodeId     Int
+  utilisateurId    Int
+  colisId          Int
+  methodeId        Int
 
-  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id])
-  colis         Colis       @relation(fields: [colisId], references: [id])
-  methodePaiement MethodePaiement @relation(fields: [methodeId], references: [id])
+  utilisateur      Utilisateur     @relation(fields: [utilisateurId], references: [id])
+  colis            Colis           @relation(fields: [colisId], references: [id])
+  methodePaiement  MethodePaiement @relation(fields: [methodeId], references: [id])
 }
 
 model Expedition {
-  id              Int          @id @default(autoincrement())
-  nom_destinataire String      @db.VarChar(50)
-  prenom_destinataire String    @db.VarChar(50)
-  telephone_destinataire String @db.VarChar(20)
-  destination     String       @db.VarChar(100)
-  date_expedition DateTime
+  id                  Int         @id @default(autoincrement())
+  nom_destinataire    String      @db.VarChar(50)
+  prenom_destinataire String      @db.VarChar(50)
+  telephone_destinataire String   @db.VarChar(20)
+  destination         String      @db.VarChar(100)
+  date_expedition     DateTime
 
-  utilisateurId Int
-  colisId       Int  @unique
+  utilisateurId       Int
+  colisId             Int  @unique
 
-  utilisateur   Utilisateur @relation(fields: [utilisateurId], references: [id])
-  colis         Colis       @relation(fields: [colisId], references: [id])
+  utilisateur         Utilisateur @relation(fields: [utilisateurId], references: [id])
+  colis               Colis       @relation(fields: [colisId], references: [id])
 
-  livraison      Livraison?
+  livraison           Livraison?
 }
 
 model Livraison {
@@ -92,9 +90,9 @@ model Livraison {
   date_livraison DateTime
   telephone      String      @db.VarChar(20)
 
-  expeditionId  Int  @unique
-  utilisateurId Int
+  expeditionId   Int  @unique
+  utilisateurId  Int
 
-  expedition    Expedition   @relation(fields: [expeditionId], references: [id])
-  utilisateur   Utilisateur  @relation(fields: [utilisateurId], references: [id])
+  expedition     Expedition   @relation(fields: [expeditionId], references: [id])
+  utilisateur    Utilisateur  @relation(fields: [utilisateurId], references: [id])
 }

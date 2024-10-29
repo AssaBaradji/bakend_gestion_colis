@@ -1,22 +1,34 @@
 import prisma from "../config/prisma.js";
 
 export const createLivraison = async (req, res) => {
-  const { date_livraison, adresse_livraison, expeditionId } = req.body;
+  const { nom, prenom, date_livraison, telephone, expeditionId, utilisateurId } = req.body;
+
+  if (!nom || !prenom || !date_livraison || !telephone || !expeditionId || !utilisateurId) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
   try {
-    const livraison = await prisma.livraison.create({
+    await prisma.livraison.create({
       data: {
+        nom,
+        prenom,
         date_livraison: new Date(date_livraison),
-        adresse_livraison,
-        expeditionId,
+        telephone,
+        expedition: {
+          connect: { id: expeditionId }, 
+        },
+        utilisateur: {
+          connect: { id: utilisateurId }, 
+        },
       },
     });
-    res.status(201).json(livraison);
+   
+    res.status(201).json({ message: "Delivery created successfully" });
   } catch (error) {
     console.error("Error creating delivery:", error);
     res.status(500).json({ error: "An error occurred while creating the delivery" });
   }
 };
-
 export const getAllLivraisons = async (req, res) => {
   try {
     const livraisons = await prisma.livraison.findMany();

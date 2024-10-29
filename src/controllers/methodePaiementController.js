@@ -11,7 +11,7 @@ export const createMethodePaiement = async (req, res) => {
   }
 };
 
-export const getAllMethodesPaiement = async (req, res) => {
+export const getAllMethodePaiements = async (req, res) => {
   try {
     const methodes = await prisma.methodePaiement.findMany();
     res.status(200).json(methodes);

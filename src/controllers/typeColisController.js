@@ -11,7 +11,7 @@ export const createTypeColis = async (req, res) => {
   }
 };
 
-export const getAllTypesColis = async (req, res) => {
+export const getAllTypeColis = async (req, res) => {
   try {
     const typesColis = await prisma.typeColis.findMany();
     res.status(200).json(typesColis);
