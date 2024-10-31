@@ -3,10 +3,6 @@ import prisma from "../config/prisma.js";
 export const createLivraison = async (req, res) => {
   const { nom, prenom, date_livraison, telephone, expeditionId, utilisateurId } = req.body;
 
-  if (!nom || !prenom || !date_livraison || !telephone || !expeditionId || !utilisateurId) {
-    return res.status(400).json({ error: "All fields are required" });
-  }
-
   try {
     await prisma.livraison.create({
       data: {
@@ -14,12 +10,8 @@ export const createLivraison = async (req, res) => {
         prenom,
         date_livraison: new Date(date_livraison),
         telephone,
-        expedition: {
-          connect: { id: expeditionId }, 
-        },
-        utilisateur: {
-          connect: { id: utilisateurId }, 
-        },
+        expedition: { connect: { id: expeditionId } },
+        utilisateur: { connect: { id: utilisateurId } },
       },
     });
    
