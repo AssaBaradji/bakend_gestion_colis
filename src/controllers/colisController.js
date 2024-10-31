@@ -62,6 +62,6 @@ export const deleteColis = async (req, res) => {
     res.status(200).json({ message: "Parcel deleted successfully" });
   } catch (error) {
     console.error("Error deleting parcel:", error);
-    res.status(500).json({ error: "An error occurred while deleting the parcel" });
+    res.status(500).json({ error: "Impossible de Supprimer ce colis" });
   }
 };

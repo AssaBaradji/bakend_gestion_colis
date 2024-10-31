@@ -1,17 +1,20 @@
 import prisma from "../config/prisma.js";
 
 export const createPaiement = async (req, res) => {
-  const { montant, date_paiement, colisId, methodePaiementId } = req.body;
+  const { montant, date_paiement, colisId, methodeId, utilisateurId, moment_paiement } = req.body;
   try {
-    const paiement = await prisma.paiement.create({
+    await prisma.paiement.create({
       data: {
         montant,
         date_paiement: new Date(date_paiement),
         colisId,
-        methodePaiementId,
+        methodeId,
+        utilisateurId,
+        moment_paiement,
       },
     });
-    res.status(201).json(paiement);
+
+    res.status(201).json("Paiement ajouté avec succès" );
   } catch (error) {
     console.error("Error creating payment:", error);
     res.status(500).json({ error: "An error occurred while creating the payment" });
@@ -42,21 +45,24 @@ export const getPaiementById = async (req, res) => {
 
 export const updatePaiement = async (req, res) => {
   const { id } = req.params;
-  const { montant, date_paiement, colisId, methodePaiementId } = req.body;
+  const { montant, date_paiement, colisId, methodeId, utilisateurId, moment_paiement } = req.body;
   try {
-    const paiement = await prisma.paiement.update({
+    await prisma.paiement.update({
       where: { id: parseInt(id) },
       data: {
         montant,
         date_paiement: new Date(date_paiement),
         colisId,
-        methodePaiementId,
+        methodeId,
+        utilisateurId,
+        moment_paiement,
       },
     });
-    res.status(200).json(paiement);
+
+    res.status(200).json("Paiement modifié avec succès");
   } catch (error) {
     console.error("Error updating payment:", error);
-    res.status(500).json({ error: "An error occurred while updating the payment" });
+    res.status(500).json({ error: "Une erreur est survenue lors de la modification du paiement" });
   }
 };
 

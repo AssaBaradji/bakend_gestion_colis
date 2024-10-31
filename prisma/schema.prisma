@@ -23,13 +23,13 @@ model Utilisateur {
 
 model MethodePaiement {
   id        Int       @id @default(autoincrement())
-  nom       String    @db.VarChar(50)
+  nom       String    @unique @db.VarChar(50)
   paiements Paiement[]
 }
 
 model TypeColis {
   id    Int     @id @default(autoincrement())
-  nom   String  @db.VarChar(50)
+  nom   String  @unique @db.VarChar(50)
   colis Colis[]
 }
 
@@ -53,7 +53,6 @@ model Colis {
 model Paiement {
   id               Int             @id @default(autoincrement())
   montant          Decimal         @db.Decimal(10, 2)
-  methode_paiement String          @db.VarChar(50)
   moment_paiement  String          @db.VarChar(50)
   date_paiement    DateTime
 
@@ -96,3 +95,5 @@ model Livraison {
   expedition     Expedition   @relation(fields: [expeditionId], references: [id])
   utilisateur    Utilisateur  @relation(fields: [utilisateurId], references: [id])
 }
+
+

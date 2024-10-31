@@ -53,20 +53,33 @@ export const getLivraisonById = async (req, res) => {
 
 export const updateLivraison = async (req, res) => {
   const { id } = req.params;
-  const { date_livraison, adresse_livraison, expeditionId } = req.body;
+  const { nom, prenom, date_livraison, telephone, expeditionId, utilisateurId } = req.body;
+
+  if (!nom || !prenom || !date_livraison || !telephone || !expeditionId || !utilisateurId) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
   try {
-    const livraison = await prisma.livraison.update({
+    await prisma.livraison.update({
       where: { id: parseInt(id) },
       data: {
+        nom,
+        prenom,
         date_livraison: new Date(date_livraison),
-        adresse_livraison,
-        expeditionId,
+        telephone,
+        expedition: {
+          connect: { id: expeditionId }
+        },
+        utilisateur: {
+          connect: { id: utilisateurId }
+        }
       },
     });
-    res.status(200).json(livraison);
+
+    res.status(200).send("La livraison est mise à jour avec succès");
   } catch (error) {
     console.error("Error updating delivery:", error);
-    res.status(500).json({ error: "An error occurred while updating the delivery" });
+    res.status(500).send("Une erreur est survenue lors de la mise à jour de la livraison");
   }
 };
 

@@ -4,10 +4,14 @@ export const createMethodePaiement = async (req, res) => {
   const { nom } = req.body;
   try {
     const methode = await prisma.methodePaiement.create({ data: { nom } });
-    res.status(201).json(methode);
+    res.status(201).json("Methode de paiement ajoutée avec succée" );
   } catch (error) {
-    console.error("Error creating payment method:", error);
-    res.status(500).json({ error: "An error occurred while creating the payment method" });
+    if (error.code === 'P2002') {
+      res.status(409).json({ error: "Payment method name must be unique" });
+    } else {
+      console.error("Error creating payment method:", error);
+      res.status(500).json({ error: "An error occurred while creating the payment method" });
+    }
   }
 };
 
@@ -38,10 +42,14 @@ export const updateMethodePaiement = async (req, res) => {
   const { nom } = req.body;
   try {
     const methode = await prisma.methodePaiement.update({ where: { id: parseInt(id) }, data: { nom } });
-    res.status(200).json(methode);
+    res.status(201).json("Methode de paiement modifié avec succée");
   } catch (error) {
-    console.error("Error updating payment method:", error);
-    res.status(500).json({ error: "An error occurred while updating the payment method" });
+    if (error.code === 'P2002') {
+      res.status(409).json({ error: "Payment method name must be unique" });
+    } else {
+      console.error("Error updating payment method:", error);
+      res.status(500).json({ error: "An error occurred while updating the payment method" });
+    }
   }
 };
 
@@ -52,6 +60,6 @@ export const deleteMethodePaiement = async (req, res) => {
     res.status(200).json({ message: "Payment method deleted successfully" });
   } catch (error) {
     console.error("Error deleting payment method:", error);
-    res.status(500).json({ error: "An error occurred while deleting the payment method" });
+    res.status(500).json({ error: "Impossible de supprimer cette methode de paiement " });
   }
 };

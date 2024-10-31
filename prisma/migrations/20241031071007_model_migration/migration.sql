@@ -44,7 +44,6 @@ CREATE TABLE "Colis" (
 CREATE TABLE "Paiement" (
     "id" SERIAL NOT NULL,
     "montant" DECIMAL(10,2) NOT NULL,
-    "methode_paiement" VARCHAR(50) NOT NULL,
     "moment_paiement" VARCHAR(50) NOT NULL,
     "date_paiement" TIMESTAMP(3) NOT NULL,
     "utilisateurId" INTEGER NOT NULL,
@@ -83,6 +82,12 @@ CREATE TABLE "Livraison" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Utilisateur_email_key" ON "Utilisateur"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "MethodePaiement_nom_key" ON "MethodePaiement"("nom");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "TypeColis_nom_key" ON "TypeColis"("nom");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Colis_code_colis_key" ON "Colis"("code_colis");
