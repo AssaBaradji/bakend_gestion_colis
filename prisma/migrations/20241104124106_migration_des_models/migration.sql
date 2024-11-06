@@ -34,7 +34,7 @@ CREATE TABLE "Colis" (
     "date_enregistrement" TIMESTAMP(3) NOT NULL,
     "description" VARCHAR(255) NOT NULL,
     "emplacement_colis" VARCHAR(100) NOT NULL,
-    "utilisateurId" INTEGER NOT NULL,
+    "utilisateurId" INTEGER,
     "typeId" INTEGER NOT NULL,
 
     CONSTRAINT "Colis_pkey" PRIMARY KEY ("id")
@@ -46,7 +46,7 @@ CREATE TABLE "Paiement" (
     "montant" DECIMAL(10,2) NOT NULL,
     "moment_paiement" VARCHAR(50) NOT NULL,
     "date_paiement" TIMESTAMP(3) NOT NULL,
-    "utilisateurId" INTEGER NOT NULL,
+    "utilisateurId" INTEGER,
     "colisId" INTEGER NOT NULL,
     "methodeId" INTEGER NOT NULL,
 
@@ -61,7 +61,7 @@ CREATE TABLE "Expedition" (
     "telephone_destinataire" VARCHAR(20) NOT NULL,
     "destination" VARCHAR(100) NOT NULL,
     "date_expedition" TIMESTAMP(3) NOT NULL,
-    "utilisateurId" INTEGER NOT NULL,
+    "utilisateurId" INTEGER,
     "colisId" INTEGER NOT NULL,
 
     CONSTRAINT "Expedition_pkey" PRIMARY KEY ("id")
@@ -75,7 +75,7 @@ CREATE TABLE "Livraison" (
     "date_livraison" TIMESTAMP(3) NOT NULL,
     "telephone" VARCHAR(20) NOT NULL,
     "expeditionId" INTEGER NOT NULL,
-    "utilisateurId" INTEGER NOT NULL,
+    "utilisateurId" INTEGER,
 
     CONSTRAINT "Livraison_pkey" PRIMARY KEY ("id")
 );
@@ -99,13 +99,13 @@ CREATE UNIQUE INDEX "Expedition_colisId_key" ON "Expedition"("colisId");
 CREATE UNIQUE INDEX "Livraison_expeditionId_key" ON "Livraison"("expeditionId");
 
 -- AddForeignKey
-ALTER TABLE "Colis" ADD CONSTRAINT "Colis_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Colis" ADD CONSTRAINT "Colis_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Colis" ADD CONSTRAINT "Colis_typeId_fkey" FOREIGN KEY ("typeId") REFERENCES "TypeColis"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_colisId_fkey" FOREIGN KEY ("colisId") REFERENCES "Colis"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -114,7 +114,7 @@ ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_colisId_fkey" FOREIGN KEY ("coli
 ALTER TABLE "Paiement" ADD CONSTRAINT "Paiement_methodeId_fkey" FOREIGN KEY ("methodeId") REFERENCES "MethodePaiement"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Expedition" ADD CONSTRAINT "Expedition_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Expedition" ADD CONSTRAINT "Expedition_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Expedition" ADD CONSTRAINT "Expedition_colisId_fkey" FOREIGN KEY ("colisId") REFERENCES "Colis"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -123,4 +123,4 @@ ALTER TABLE "Expedition" ADD CONSTRAINT "Expedition_colisId_fkey" FOREIGN KEY ("
 ALTER TABLE "Livraison" ADD CONSTRAINT "Livraison_expeditionId_fkey" FOREIGN KEY ("expeditionId") REFERENCES "Expedition"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Livraison" ADD CONSTRAINT "Livraison_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Livraison" ADD CONSTRAINT "Livraison_utilisateurId_fkey" FOREIGN KEY ("utilisateurId") REFERENCES "Utilisateur"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -41,8 +41,8 @@ model Colis {
   description         String      @db.VarChar(255)
   emplacement_colis   String      @db.VarChar(100)
 
-  utilisateurId Int
-  utilisateur   Utilisateur      @relation(fields: [utilisateurId], references: [id])
+  utilisateurId Int?
+  utilisateur   Utilisateur?      @relation(fields: [utilisateurId], references: [id])
 
   paiements     Paiement[]
   typeId        Int
@@ -56,11 +56,11 @@ model Paiement {
   moment_paiement  String          @db.VarChar(50)
   date_paiement    DateTime
 
-  utilisateurId    Int
+  utilisateurId    Int?
   colisId          Int
   methodeId        Int
 
-  utilisateur      Utilisateur     @relation(fields: [utilisateurId], references: [id])
+  utilisateur      Utilisateur?    @relation(fields: [utilisateurId], references: [id])
   colis            Colis           @relation(fields: [colisId], references: [id])
   methodePaiement  MethodePaiement @relation(fields: [methodeId], references: [id])
 }
@@ -73,10 +73,10 @@ model Expedition {
   destination         String      @db.VarChar(100)
   date_expedition     DateTime
 
-  utilisateurId       Int
+  utilisateurId       Int?
   colisId             Int  @unique
 
-  utilisateur         Utilisateur @relation(fields: [utilisateurId], references: [id])
+  utilisateur         Utilisateur? @relation(fields: [utilisateurId], references: [id])
   colis               Colis       @relation(fields: [colisId], references: [id])
 
   livraison           Livraison?
@@ -90,10 +90,10 @@ model Livraison {
   telephone      String      @db.VarChar(20)
 
   expeditionId   Int  @unique
-  utilisateurId  Int
+  utilisateurId  Int?
 
   expedition     Expedition   @relation(fields: [expeditionId], references: [id])
-  utilisateur    Utilisateur  @relation(fields: [utilisateurId], references: [id])
+  utilisateur    Utilisateur?  @relation(fields: [utilisateurId], references: [id])
 }
 
 
