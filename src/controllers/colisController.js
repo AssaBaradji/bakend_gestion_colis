@@ -1,14 +1,27 @@
 import prisma from "../config/prisma.js";
-
+import jwt from "jsonwebtoken"
+import { config } from "dotenv";
+config()
+const JWT_SECRET = process.env.JWT_SECRET;
 export const createColis = async (req, res) => {
-  const { prix, code_colis, date_enregistrement, description, emplacement_colis, utilisateurId, typeId } = req.body;
+  const { prix, code_colis, date_enregistrement, description, emplacement_colis, typeId } = req.body;
+  const utilisateurId = req.utilisateur.utilisateurId;
+
   try {
     await prisma.colis.create({
-      data: { prix, code_colis, date_enregistrement: new Date(date_enregistrement), description, emplacement_colis, utilisateurId, typeId },
+      data: {
+        prix,
+        code_colis,
+        date_enregistrement: new Date(date_enregistrement),
+        description,
+        emplacement_colis,
+        utilisateurId: utilisateurId,
+        typeId,
+      },
     });
     res.status(201).json({ message: "Le colis a été enregistré avec succès." });
   } catch (error) {
-    console.error("Error creating parcel:", error);
+    console.error("Erreur lors de la création du colis :", error);
     res.status(500).json({ error: "Une erreur est survenue lors de l'enregistrement du colis." });
   }
 };
@@ -46,7 +59,15 @@ export const updateColis = async (req, res) => {
   try {
     const colis = await prisma.colis.update({
       where: { id: parseInt(id, 10) },
-      data: { prix, code_colis, date_enregistrement: new Date(date_enregistrement), description, emplacement_colis, utilisateurId, typeId },
+      data: {
+        prix,
+        code_colis,
+        date_enregistrement: new Date(date_enregistrement),
+        description,
+        emplacement_colis,
+        utilisateurId: utilisateurId || null, 
+        typeId,
+      },
     });
     res.status(200).json({ message: "Le colis a été mis à jour avec succès." });
   } catch (error) {

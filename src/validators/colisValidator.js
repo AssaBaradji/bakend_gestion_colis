@@ -7,8 +7,10 @@ const createColisValidator = [
     .notEmpty()
     .withMessage("Le prix est requis!")
     .bail()
-    .isDecimal({ decimal_digits: '2' })
-    .withMessage("Le prix doit être un nombre décimal avec 2 chiffres après la virgule!"),
+    .isDecimal({ decimal_digits: "2" })
+    .withMessage(
+      "Le prix doit être un nombre décimal avec 2 chiffres après la virgule!"
+    ),
 
   check("code_colis")
     .notEmpty()
@@ -18,7 +20,9 @@ const createColisValidator = [
     .withMessage("Le code du colis ne doit pas dépasser 20 caractères!")
     .bail()
     .custom(async (value) => {
-      const existingColis = await prisma.colis.findUnique({ where: { code_colis: value } });
+      const existingColis = await prisma.colis.findUnique({
+        where: { code_colis: value },
+      });
       if (existingColis) {
         throw new Error("Ce code de colis est déjà utilisé!");
       }
@@ -47,16 +51,18 @@ const createColisValidator = [
     .withMessage("L'emplacement du colis ne doit pas dépasser 100 caractères!"),
 
   check("utilisateurId")
-    .notEmpty()
-    .withMessage("L'ID de l'utilisateur est requis!")
-    .bail()
+    .optional() 
     .isInt()
     .withMessage("L'ID de l'utilisateur doit être un entier!")
     .bail()
     .custom(async (value) => {
-      const user = await prisma.utilisateur.findUnique({ where: { id: value } });
-      if (!user) {
-        throw new Error("Utilisateur non trouvé!");
+      if (value) {
+        const user = await prisma.utilisateur.findUnique({
+          where: { id: value },
+        });
+        if (!user) {
+          throw new Error("Utilisateur non trouvé!");
+        }
       }
       return true;
     }),
@@ -96,7 +102,9 @@ const updateColisValidator = [
     .withMessage("L'ID du colis doit être un entier!")
     .bail()
     .custom(async (value) => {
-      const colis = await prisma.colis.findUnique({ where: { id: parseInt(value) } });
+      const colis = await prisma.colis.findUnique({
+        where: { id: parseInt(value) },
+      });
       if (!colis) {
         throw new Error("Colis non trouvé!");
       }
@@ -105,8 +113,10 @@ const updateColisValidator = [
 
   check("prix")
     .optional()
-    .isDecimal({ decimal_digits: '2' })
-    .withMessage("Le prix doit être un nombre décimal avec 2 chiffres après la virgule!"),
+    .isDecimal({ decimal_digits: "2" })
+    .withMessage(
+      "Le prix doit être un nombre décimal avec 2 chiffres après la virgule!"
+    ),
 
   check("code_colis")
     .optional()
@@ -144,9 +154,13 @@ const updateColisValidator = [
     .withMessage("L'ID de l'utilisateur doit être un entier!")
     .bail()
     .custom(async (value) => {
-      const user = await prisma.utilisateur.findUnique({ where: { id: value } });
-      if (!user) {
-        throw new Error("Utilisateur non trouvé!");
+      if (value) {
+        const user = await prisma.utilisateur.findUnique({
+          where: { id: value },
+        });
+        if (!user) {
+          throw new Error("Utilisateur non trouvé!");
+        }
       }
       return true;
     }),
@@ -183,7 +197,9 @@ const deleteColisValidator = [
     .withMessage("L'ID du colis doit être un entier!")
     .bail()
     .custom(async (value) => {
-      const colis = await prisma.colis.findUnique({ where: { id: parseInt(value) } });
+      const colis = await prisma.colis.findUnique({
+        where: { id: parseInt(value) },
+      });
       if (!colis) {
         throw new Error("Colis non trouvé!");
       }

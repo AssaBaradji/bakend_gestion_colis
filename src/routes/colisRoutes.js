@@ -11,14 +11,15 @@ import {
   updateColisValidator,
   deleteColisValidator,
 } from "../validators/colisValidator.js"; 
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 
-router.post("/", createColisValidator, createColis);
-router.get("/", getAllColis); 
-router.get("/:id", getColisById); 
-router.put("/:id", updateColisValidator, updateColis); 
-router.delete("/:id", deleteColisValidator, deleteColis); 
+router.post("/", authMiddleware, createColisValidator, createColis);
+router.get("/", authMiddleware, getAllColis); 
+router.get("/:id",authMiddleware, getColisById); 
+router.put("/:id", authMiddleware, updateColisValidator, updateColis); 
+router.delete("/:id", authMiddleware, deleteColisValidator, deleteColis); 
 
 export default router;

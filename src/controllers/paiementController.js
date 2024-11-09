@@ -1,7 +1,10 @@
 import prisma from "../config/prisma.js";
 
 export const createPaiement = async (req, res) => {
-  const { montant, date_paiement, colisId, methodeId, utilisateurId, moment_paiement } = req.body;
+  const { montant, date_paiement, colisId, methodeId, moment_paiement } =
+    req.body;
+  const utilisateurId = req.utilisateur.utilisateurId;
+
   try {
     await prisma.paiement.create({
       data: {
@@ -14,10 +17,12 @@ export const createPaiement = async (req, res) => {
       },
     });
 
-    res.status(201).json("Paiement ajouté avec succès" );
+    res.status(201).json("Paiement ajouté avec succès");
   } catch (error) {
     console.error("Error creating payment:", error);
-    res.status(500).json({ error: "An error occurred while creating the payment" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while creating the payment" });
   }
 };
 
@@ -27,25 +32,34 @@ export const getAllPaiements = async (req, res) => {
     res.status(200).json(paiements);
   } catch (error) {
     console.error("Error fetching payments:", error);
-    res.status(500).json({ error: "An error occurred while fetching payments" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching payments" });
   }
 };
 
 export const getPaiementById = async (req, res) => {
   const { id } = req.params;
   try {
-    const paiement = await prisma.paiement.findUnique({ where: { id: parseInt(id) } });
+    const paiement = await prisma.paiement.findUnique({
+      where: { id: parseInt(id) },
+    });
     if (!paiement) return res.status(404).json({ error: "Payment not found" });
     res.status(200).json(paiement);
   } catch (error) {
     console.error("Error fetching payment:", error);
-    res.status(500).json({ error: "An error occurred while fetching the payment" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the payment" });
   }
 };
 
 export const updatePaiement = async (req, res) => {
   const { id } = req.params;
-  const { montant, date_paiement, colisId, methodeId, utilisateurId, moment_paiement } = req.body;
+  const { montant, date_paiement, colisId, methodeId, moment_paiement } =
+    req.body;
+  const utilisateurId = req.utilisateur.utilisateurId;
+
   try {
     await prisma.paiement.update({
       where: { id: parseInt(id) },
@@ -62,7 +76,11 @@ export const updatePaiement = async (req, res) => {
     res.status(200).json("Paiement modifié avec succès");
   } catch (error) {
     console.error("Error updating payment:", error);
-    res.status(500).json({ error: "Une erreur est survenue lors de la modification du paiement" });
+    res
+      .status(500)
+      .json({
+        error: "Une erreur est survenue lors de la modification du paiement",
+      });
   }
 };
 
@@ -73,6 +91,8 @@ export const deletePaiement = async (req, res) => {
     res.status(200).json({ message: "Payment deleted successfully" });
   } catch (error) {
     console.error("Error deleting payment:", error);
-    res.status(500).json({ error: "An error occurred while deleting the payment" });
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting the payment" });
   }
 };

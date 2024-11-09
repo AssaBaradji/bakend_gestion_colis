@@ -33,8 +33,7 @@ const createExpeditionValidator = [
     .withMessage("La date d'expédition doit être au format ISO8601!"),
 
   check("utilisateurId")
-    .notEmpty()
-    .withMessage("L'ID de l'utilisateur est requis!")
+    .optional()  // Rend l'ID utilisateur optionnel
     .isInt()
     .withMessage("L'ID de l'utilisateur doit être un entier!")
     .custom(async (value) => {

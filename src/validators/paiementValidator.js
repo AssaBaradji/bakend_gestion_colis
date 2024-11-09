@@ -48,9 +48,7 @@ const createPaiementValidator = [
     }),
 
   check("utilisateurId")
-    .notEmpty()
-    .withMessage("L'ID de l'utilisateur est requis!")
-    .bail()
+    .optional() 
     .isInt()
     .withMessage("L'ID de l'utilisateur doit être un entier!")
     .bail()

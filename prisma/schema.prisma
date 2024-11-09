@@ -19,18 +19,24 @@ model Utilisateur {
   paiements    Paiement[]
   expeditions  Expedition[]
   livraisons   Livraison[]
+  methodes     MethodePaiement[]
+  typesColis   TypeColis[]
 }
 
 model MethodePaiement {
   id        Int       @id @default(autoincrement())
   nom       String    @unique @db.VarChar(50)
-  paiements Paiement[]
+  utilisateurId Int?
+  utilisateur   Utilisateur?  @relation(fields: [utilisateurId], references: [id])
+  paiements     Paiement[]
 }
 
 model TypeColis {
   id    Int     @id @default(autoincrement())
   nom   String  @unique @db.VarChar(50)
-  colis Colis[]
+  utilisateurId Int?
+  utilisateur   Utilisateur?  @relation(fields: [utilisateurId], references: [id])
+  colis         Colis[]
 }
 
 model Colis {

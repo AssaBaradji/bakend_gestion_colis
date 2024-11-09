@@ -11,13 +11,14 @@ import {
   updateExpeditionValidator,
   deleteExpeditionValidator,
 } from "../validators/expeditionValidator.js"; 
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", createExpeditionValidator, createExpedition);        
-router.get("/", getAllExpeditions);                                   
-router.get("/:id", getExpeditionById);                                 
-router.put("/:id", updateExpeditionValidator, updateExpedition);      
-router.delete("/:id", deleteExpeditionValidator, deleteExpedition);    
+router.post("/", authMiddleware, createExpeditionValidator, createExpedition);        
+router.get("/", authMiddleware, getAllExpeditions);                                   
+router.get("/:id", authMiddleware, getExpeditionById);                                 
+router.put("/:id", authMiddleware, updateExpeditionValidator, updateExpedition);      
+router.delete("/:id", authMiddleware, deleteExpeditionValidator, deleteExpedition);    
 
 export default router;
