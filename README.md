@@ -1,6 +1,6 @@
 # Mise en place d'une application de suivi des expeditions de colis
 
-Ce projet backend est développé avec **Express.js** et utilise **Prisma** pour l'ORM (Object Relational Mapping), en interaction avec une base de données **PostgreSQL**. L'application offre des fonctionnalités pour la gestion des utilisateurs, expéditions, paiements, colis, livraisons, méthodes de paiement et types de colis.
+Ce projet est développé avec **Express.js** et utilise **Prisma** pour l'ORM (Object Relational Mapping), en interaction avec une base de données **PostgreSQL**. L'application offre des fonctionnalités pour la gestion des utilisateurs, expéditions, paiements, colis, livraisons, méthodes de paiement et types de colis.
 
 ## Prérequis
 
@@ -15,13 +15,13 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 1. Clonez le dépôt :
 
 ```bash
-   git clone https://github.com/AssaBaradji/bakend_project_certification.git
+   git clone https://github.com/AssaBaradji/bakend_gestions_colis.git
 ```
 
 2.Accédez au répertoire du projet :
 
 ```bash
-cd bakend_project_certification
+cd bakend_gestions_colis
 ```
 
 3.Installez les dépendances :
