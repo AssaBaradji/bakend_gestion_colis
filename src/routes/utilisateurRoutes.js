@@ -12,13 +12,13 @@ import {
   deleteUserValidator,
 } from "../validators/utilisateurValidator.js";
 
-import { authMiddleware } from "../middlewares/authMiddleware.js"
+import { authMiddleware, adminMiddleware} from "../middlewares/authMiddleware.js"
 const router = express.Router();
 
-router.post("/register", registerUserValidator, registerUser);
-router.get("/",authMiddleware, getAllUsers);
-router.get("/:id", getUserById);
-router.put("/:id", updateUserValidator, updateUser);
+router.post("/register", authMiddleware, adminMiddleware, registerUserValidator, registerUser);
+router.get("/", authMiddleware, getAllUsers);
+router.get("/:id", authMiddleware,getUserById);
+router.put("/:id", authMiddleware, adminMiddleware, updateUserValidator, updateUser);
 router.delete("/:id", deleteUserValidator, deleteUser);
 
 export default router;

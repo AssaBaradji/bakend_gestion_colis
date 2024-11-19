@@ -105,7 +105,7 @@ export const updateUser = async (req, res) => {
     });
 
     res.status(200).json({
-      message: "User updated successfully",
+      message: "Utilisateur mis à jour avec succés",
     });
   } catch (error) {
     console.error("Error updating user:", error);
@@ -120,7 +120,7 @@ export const deleteUser = async (req, res) => {
 
   try {
     await prisma.utilisateur.delete({ where: { id: parseInt(id) } });
-    res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ message: "Utilisateur supprimé avec succées" });
   } catch (error) {
     console.error("Error deleting user:", error);
     res

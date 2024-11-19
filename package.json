@@ -21,7 +21,8 @@
     "express-validator": "^7.2.0",
     "helmet": "^8.0.0",
     "http-status-codes": "^2.3.0",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.16"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",

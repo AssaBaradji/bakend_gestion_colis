@@ -17,13 +17,11 @@ const authMiddleware = (req, res, next) => {
 };
 
 
-// const adminMiddleware = (req, res, next) => {
-//   if (req.utilisateur.role !== 'ADMIN') {
-//     return res.status(403).json({ message: 'Accès interdit. Administrateurs uniquement.' });
-//   }
-//   next();
-// };
+const adminMiddleware = (req, res, next) => {
+  if (req.utilisateur.role !== 'Admin') {
+    return res.status(403).json({ message: 'Accès interdit. Administrateurs uniquement.' });
+  }
+  next();
+};
 
-
-
-export { authMiddleware};
+export { authMiddleware,  adminMiddleware};

@@ -6,13 +6,16 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
-
+enum Role {
+  Admin
+  Agent
+}
 model Utilisateur {
   id           Int          @id @default(autoincrement())
   nom          String       @db.VarChar(50)
   email        String       @unique @db.VarChar(100)
   mot_de_passe String       @db.VarChar(255)
-  role         String       @db.VarChar(50)
+  role         Role         @default(Agent)
   statut       Boolean      @default(true)
 
   colis        Colis[]
