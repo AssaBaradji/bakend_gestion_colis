@@ -46,7 +46,14 @@ export const createExpedition = async (req, res) => {
 
 export const getAllExpeditions = async (req, res) => {
   try {
-    const expeditions = await prisma.expedition.findMany();
+    const expeditions = await prisma.expedition.findMany({
+      include:{colis:{
+        select:{
+          code_colis: true,
+          
+        }
+      }}
+    });
     res.status(200).json(expeditions);
   } catch (error) {
     console.error("Error fetching expeditions:", error);

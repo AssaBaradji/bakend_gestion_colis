@@ -42,9 +42,11 @@ router.post("/", async (req, res) => {
       token,
       message: "Connexion réussie !",
       utilisateur: {
+        id: utilisateur.id,
         nom: utilisateur.nom,
         role: utilisateur.role,
         statut: utilisateur.statut,
+        email: utilisateur.email,
       },
     });
   } catch (error) {

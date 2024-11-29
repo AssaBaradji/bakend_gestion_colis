@@ -115,6 +115,79 @@ export const updateUser = async (req, res) => {
   }
 };
 
+export const updateCurrentUser = async (req, res) => {
+    
+  const { name, email } = req.body;
+
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+  if (!token) {
+    return res.status(401).json({ error: "Authorization token is required." });
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const id = decoded.utilisateurId;
+
+  try {
+    const existingUser = await prisma.utilisateur.findUnique({
+      where: { id: parseInt(id) },
+    });
+    if (!existingUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    await prisma.utilisateur.update({
+      where: { id: Number(id) },
+      data: { email, nom: name },
+    });
+
+    res.status(200).json({
+      message: "Utilisateur mis à jour avec succés", user: { id, nom: name, email}
+    });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the user" });
+  }
+};
+export const changePassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+  if (!token) {
+    return res.status(401).json({ error: "Le token d'autorisation est requis." });
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const id = decoded.utilisateurId;
+
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+    const existingUser = await prisma.utilisateur.findUnique({
+      where: { id: parseInt(id) },
+    });
+    if (!existingUser) {
+      return res.status(404).json({ error: "Utilisateur non trouvé." });
+    }
+
+    await prisma.utilisateur.update({
+      where: { id: Number(id) },
+      data: { mot_de_passe: hashedPassword },
+    });
+
+    res.status(200).json({
+      message: "Mot de passe mis à jour avec succès.",
+    });
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du mot de passe :", error);
+    res.status(500).json({
+      error: "Une erreur est survenue lors de la mise à jour du mot de passe.",
+    });
+  }
+};
+
+
 export const deleteUser = async (req, res) => {
   const { id } = req.params;
 

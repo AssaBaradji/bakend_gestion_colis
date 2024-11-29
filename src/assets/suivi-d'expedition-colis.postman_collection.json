@@ -7,468 +7,1309 @@
 	},
 	"item": [
 		{
-			"name": "login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"sara32@gmail.com\",\r\n    \"mot_de_passe\": \"123456\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Connexion",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mauritanie.mr\",\r\n    \"mot_de_passe\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nom\": \"28Novembre\",\r\n    \"email\": \"28novembre@gmail.com\",\r\n    \"mot_de_passe\":\"pass28\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": true\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"baradjiassa695@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"forgot-password"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/utilisateurs/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"utilisateurs",
-						"register"
-					]
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sara32@gmail.com\",\r\n    \"mot_de_passe\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Utilisateurs",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjo5LCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzA5MDA4NTgsImV4cCI6MTczMDk4MzY1OH0.W0-rHZIfGOrEzwiBDTAZcUeU06pn0d7SSFTYcK_sY9Q",
-							"type": "string"
+			"item": [
+				{
+					"name": "créerUtilisateur",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Assa\",\r\n    \"email\": \"baradjiassa695@gmail.com\",\r\n    \"mot_de_passe\":\"123456\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"register"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nom\": \"Noumbe Diop\",\r\n    \"email\": \"noumbe62@gmail.com\",\r\n    \"mot_de_passe\":\"123456\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": false\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "recupérerUtilisateur",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjo5LCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzA5MDA4NTgsImV4cCI6MTczMDk4MzY1OH0.W0-rHZIfGOrEzwiBDTAZcUeU06pn0d7SSFTYcK_sY9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Noumbe Diop\",\r\n    \"email\": \"noumbe62@gmail.com\",\r\n    \"mot_de_passe\":\"123456\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/utilisateurs",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"utilisateurs"
-					]
+				{
+					"name": "récupéreParID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Noumbe Diop\",\r\n    \"email\": \"noumbe62@gmail.com\",\r\n    \"mot_de_passe\":\"123456\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/116",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"116"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierUtilisateur",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Assa Baradi\",\r\n    \"email\": \"baradjiassa695@gmail.com\",\r\n    \"role\": \"Agent\",\r\n    \"statut\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/116",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"116"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SupprimerUtilisateur",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/116",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"116"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "colis",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Colis",
+			"item": [
+				{
+					"name": "créerColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prix\": \"20000\",\r\n    \"code_colis\": \"COE4500\",\r\n    \"date_enregistrement\": \"2024-12-05T00:00:00.000Z\",\r\n    \"description\": \"Mériels de bureau\",\r\n    \"emplacement_colis\": \"Atar\",\r\n    \"typeId\": 103\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/colis/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"colis",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/colis/21",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"colis",
-						"21"
-					]
+				{
+					"name": "récupereColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/colis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"colis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "récuppréreParIID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/colis/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"colis",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prix\": \"2000\",\r\n    \"code_colis\": \"COE4500\",\r\n    \"date_enregistrement\": \"2024-12-05T00:00:00.000Z\",\r\n    \"description\": \"Mériels de bureau\",\r\n    \"emplacement_colis\": \"Atar\",\r\n    \"utilisateurId\": 110,\r\n    \"typeId\": 103\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/colis/84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"colis",
+								"84"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4ODY2MywiZXhwIjoxNzMyNTcxNDYzfQ.1XceRjqstjt0WxqZKnx3UemZxf6RceFOjfI0gLlJ_2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/colis/84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"colis",
+								"84"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "colis",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Expeditions",
+			"item": [
+				{
+					"name": "créerExpedition",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom_destinataire\": \"Soumaré\",\r\n    \"prenom_destinataire\": \"Mouhamed\",\r\n    \"telephone_destinataire\": \"34500478\",\r\n    \"destination\": \"Senegal\",\r\n    \"date_expedition\": \"2024-11-06T00:00:00.000Z\",\r\n    \"colisId\": 24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expeditions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expeditions",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"prix\": \"19000\",\r\n    \"code_colis\": \"AZE4500\",\r\n    \"date_enregistrement\": \"2024-12-05T00:00:00.000Z\",\r\n    \"description\": \"Mériels de construction\",\r\n    \"emplacement_colis\": \"Atar\",\r\n    \"typeId\": 11\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "récupererExpedition",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/expeditions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expeditions",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/colis/21",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"colis",
-						"21"
-					]
+				{
+					"name": "récupéreParID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom_destinataire\": \"Soumaré\",\r\n    \"prenom_destinataire\": \"Mouhamed\",\r\n    \"telephone_destinataire\": \"34500478\",\r\n    \"destination\": \"Senegal\",\r\n    \"date_expedition\": \"2024-11-06T00:00:00.000Z\",\r\n    \"utilisateurId\": 110,\r\n    \"colisId\": 83\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expeditions/59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expeditions",
+								"59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierExpedition",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom_destinataire\": \"Soumaré\",\r\n    \"prenom_destinataire\": \"Mouhamedoune\",\r\n    \"telephone_destinataire\": \"34500478\",\r\n    \"destination\": \"Senegal\",\r\n    \"date_expedition\": \"2024-11-06T00:00:00.000Z\",\r\n    \"colisId\": 83\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expeditions/59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expeditions",
+								"59"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerExpedition",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/expeditions/59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"expeditions",
+								"59"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "colis",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Type_Colis",
+			"item": [
+				{
+					"name": "créerTypeColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Fragile\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/types-colis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"types-colis"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"prix\": \"20000\",\r\n    \"code_colis\": \"COE4500\",\r\n    \"date_enregistrement\": \"2024-12-05T00:00:00.000Z\",\r\n    \"description\": \"Mériels de bureau\",\r\n    \"emplacement_colis\": \"Atar\",\r\n    \"typeId\": 11\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "récupéreTypeColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/types-colis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"types-colis"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/colis/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"colis",
-						""
-					]
+				{
+					"name": "récupereParID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "modifierTypeColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Savons\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/types-colis/111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"types-colis",
+								"111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerTypeColis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/types-colis/111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"types-colis",
+								"111"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "expeditions",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Paiements",
+			"item": [
+				{
+					"name": "créerPaiement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"montant\": \"50000\",\r\n    \"moment_paiement\": \"arrivée\",\r\n    \"date_paiement\": \"2024-11-27T00:00:00.000Z\",\r\n    \"colisId\": 83,\r\n    \"methodeId\": 83\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/paiements/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"paiements",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/expeditions/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"expeditions",
-						""
-					]
+				{
+					"name": "récupérePaiement",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "récupereParID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/paiements/67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"paiements",
+								"67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierPaiement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"montant\": \"50000\",\r\n    \"moment_paiement\": \"Départ\",\r\n    \"date_paiement\": \"2024-11-27T00:00:00.000Z\",\r\n    \"colisId\": 83,\r\n    \"methodeId\": 83\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/paiements/67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"paiements",
+								"67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerPaiement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/paiements/67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"paiements",
+								"67"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "expeditions",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Livraisons",
+			"item": [
+				{
+					"name": "créerLivraison",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Assa\",\r\n    \"prenom\": \"Baradji\",\r\n    \"date_livraison\": \"2024-12-31T23:00:00.000Z\",\r\n    \"telephone\": \"43435633\",\r\n    \"expeditionId\": 58\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/livraisons/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livraisons",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nom_destinataire\": \"Soumaré\",\r\n    \"prenom_destinataire\": \"Mouhamed\",\r\n    \"telephone_destinataire\": \"34500478\",\r\n    \"destination\": \"Senegal\",\r\n    \"date_expedition\": \"2024-11-06T00:00:00.000Z\",\r\n    \"colisId\": 24\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "récupéreLivraison",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/livraisons/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livraisons",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/expeditions/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"expeditions",
-						""
-					]
+				{
+					"name": "récupéreParID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/livraisons/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livraisons",
+								"52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierLivraison",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Moustapha\",\r\n    \"prenom\": \"Hamidou\",\r\n    \"date_livraison\": \"2024-11-24T20:56:38.944Z\",\r\n    \"telephone\": \"555667788\",\r\n    \"expeditionId\": 58\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/livraisons/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livraisons",
+								"52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerLivraison",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/livraisons/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livraisons",
+								"52"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "utilisateurs",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
+			"name": "Methodes_paiements",
+			"item": [
+				{
+					"name": "créerMethode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Wave\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/methodes-paiement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"methodes-paiement"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nom_destinataire\": \"Mariem\",\r\n    \"prenom_destinataire\": \"Mouhamed\",\r\n    \"telephone_destinataire\": \"34500478\",\r\n    \"destination\": \"Senegal\",\r\n    \"date_expedition\": \"2024-11-06T00:00:00.000Z\",\r\n    \"colisId\": 4\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "récupereMethode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/methodes-paiement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"methodes-paiement"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/expeditions/16",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"expeditions",
-						"16"
-					]
+				{
+					"name": "récupereParID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/methodes-paiement/84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"methodes-paiement",
+								"84"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifierMethode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Save\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/methodes-paiement/84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"methodes-paiement",
+								"84"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprimerMethode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoxMTAsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjQ4OTUzMywiZXhwIjoxNzMyNTcyMzMzfQ.4BHbcdz7nNfhaBUkdPT8-cJqPtElIqOqC7DFyWysanI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/methodes-paiement/84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"methodes-paiement",
+								"84"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "paiements",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "paiements",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"montant\": \"50000\",\r\n    \"moment_paiement\": \"arrivée\",\r\n    \"date_paiement\": \"2024-11-27T00:00:00.000Z\",\r\n    \"colisId\": 24,\r\n    \"methodeId\": 8\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/paiements/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"paiements",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "paiements",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dGlsaXNhdGV1cklkIjoyNywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzMxMzk3NzExLCJleHAiOjE3MzE0ODA1MTF9.9V-gQSbVAHjrH83yo5D_dLFq2AjD7jS2gAXVKasc7Ns",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"montant\": \"50000\",\r\n    \"moment_paiement\": \"Départ\",\r\n    \"date_paiement\": \"2024-11-27T00:00:00.000Z\",\r\n    \"colisId\": 24,\r\n    \"methodeId\": 8\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/paiements/14",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"paiements",
-						"14"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
+			]
 		}
 	]
 }

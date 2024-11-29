@@ -8,9 +8,8 @@ import livraisonRoutes from "./src/routes/livraisonRoutes.js";
 import methodePaiementRoutes from "./src/routes/methodePaiementRoutes.js";
 import typeColisRoutes from "./src/routes/typeColisRoutes.js";
 import colisRoutes from "./src/routes/colisRoutes.js";
-// import authRoutes from "./src/routes/authRoutes.js"
-import loginRoute from "./src/controllers/authController.js"
-import motDePassRoute from "./src/routes/motDePassRoutes.js"
+import loginRoute from "./src/controllers/authController.js";
+import motDePassRoute from "./src/routes/motDePassRoutes.js";
 
 const app = express();
 const port = 3000;
@@ -31,7 +30,7 @@ app.use(helmet());
 
 app.use("/utilisateurs", utilisateurRoutes);
 app.use("/paiements", paiementRoutes);
-app.use("/expeditions",  expeditionRoutes);
+app.use("/expeditions", expeditionRoutes);
 app.use("/livraisons", livraisonRoutes);
 app.use("/methodes-paiement", methodePaiementRoutes);
 app.use("/types-colis", typeColisRoutes);
@@ -39,11 +38,6 @@ app.use("/colis", colisRoutes);
 app.use("/login", loginRoute);
 app.use("/api", motDePassRoute);
 
-
-
-
-
-// app.use("/auth", authRoutes);
 
 app.listen(port, () => {
   console.log(`Serveur lancé sur le port ${port}`);

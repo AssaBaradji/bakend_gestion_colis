@@ -76,23 +76,34 @@ export const updatePaiement = async (req, res) => {
     res.status(200).json("Paiement modifié avec succès");
   } catch (error) {
     console.error("Error updating payment:", error);
-    res
-      .status(500)
-      .json({
-        error: "Une erreur est survenue lors de la modification du paiement",
-      });
+    res.status(500).json({
+      error: "Une erreur est survenue lors de la modification du paiement",
+    });
   }
 };
 
 export const deletePaiement = async (req, res) => {
   const { id } = req.params;
   try {
+    const paiement = await prisma.paiement.findUnique({
+      where: { id: parseInt(id) },
+      include: { colis: true },
+    });
+
+    if (paiement && paiement.colis) {
+      return res
+        .status(400)
+        .json({ error: "Impossible de supprimer un paiement lié à un colis." });
+    }
+
     await prisma.paiement.delete({ where: { id: parseInt(id) } });
-    res.status(200).json({ message: "Payment deleted successfully" });
+    res.status(200).json({ message: "Paiement supprimé avec succès." });
   } catch (error) {
-    console.error("Error deleting payment:", error);
+    console.error("Erreur lors de la suppression du paiement :", error);
     res
       .status(500)
-      .json({ error: "An error occurred while deleting the payment" });
+      .json({
+        error: "Une erreur est survenue lors de la suppression du paiement.",
+      });
   }
 };
